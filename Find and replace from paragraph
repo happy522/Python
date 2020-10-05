@@ -1,50 +1,65 @@
 count=0
-string = input("Enter one paragraph: ")
+f=0
+string = input("\nEnter one paragraph: ")
 
 #paragraph will stored in stirng named variable
 arr = string.split()
 #here arr (list type) will store every word in paragreaph in list form
-
 while(True):
-	no = int(input("Enter number: \n 1. For Find and Replace \n 2. For Find\n 3. For Find and Replace without case sensitivity\n"))
-	#for user choice
-	if(no<=3 and no>=1):
+	while(True):
+		if(f==1):	#if user havn't entered number between 1 to 3 first time f=0 so control will directly goes to else condition
+			no=int(input("\nPlease enter number for chooice between 1 and 3:\nEnter: "))
+		else:
+			no = int(input("\nEnter number: \n 1. For Find and Replace \n 2. For Find\n 3. For Find and Replace without case sensitivity\n\nEnter: "))
+			
+		#for user choice
+		if(no<=3 and no>=1):
+			break
+		else:
+			f=1	#if number that is entered by user is not in between 1 and 3 control will goes to if(f==1) condition and ask user to reenter choice
+
+
+	if(no==1):	#if no==1 user choose to find and replace
+		find = input("\nEnter word for Find: ")	#find will store word that user wanted to find in para
+		rep = input("\nEnter word for Replace: ")	#store will store word that user wanted to replace with found worf in para
+		for i in range (0,len(arr)):		#for loop that will ittreate over every word in list that is made up of para
+			if(arr[i]==find):		#if perticular word is found in list
+				arr[i]=rep		#it will replace found word to rep word
+				count+=1		#count will incremented by 1 so we can keep track how many replce are done
+			strin=""			#created new string for storing replaced para
+			for ele in arr:			#ittrate over every word in arr
+				strin+=ele		#append word to string
+				strin+=" "   		#add space between every word
+		print(count,"Replacment done")		#display how many times word is replaced
+		print(strin)				#printing final para with replaced word
+		print("\n-------------------------------------------------")
+
+	elif(no==2):	#if no==2 user choose to find 
+		find = input("\nEnter word for Find: ")	#find will store word that user wanted to find in para
+		for i in range (0,len(arr)):		#for loop that will ittreate over every word in list that is made up of para
+			if(arr[i]==find):		#if perticular word is found in list
+				count+=1		#count will incremented by 1 so we can keep track how many words are found
+		print(count,"times word",find,"found")	#display how many times word is found
+		print("\n-------------------------------------------------")
+
+	else:		#if no==3 or else condition user choose to find and replace without case-sensitivity 
+		find = input("\nEnter word for Find: ")	#find will store word that user wanted to find in para
+		rep = input("\nEnter word for Replace: ")	
+		for i in range (0,len(arr)):		#for loop that will ittreate over every word in list that is made up of para
+			if(arr[i].upper()==find.upper()):	#find word without case-sensitivity
+				arr[i]=rep			#it will replace found word to rep word
+				count+=1			#count will incremented by 1 so we can keep track how many replce are done
+			strin=""				#created new string for storing replaced para
+			for ele in arr:				#ittrate over every word in arr
+				strin+=ele			#append word to string
+				strin+=" "   			#add space between every word
+		print(count,"Replacment done")		#display how many times word is replaced			
+		print(strin)				#printing final para with replaced word	
+		print("\n----------------------------------------------------")
+
+	con = input("\n\nDo you want to continue? enter Yes or Y for continue: ") #ask user if he/she wanted to continue program and wanted further replacement or wanted to find other wors or not
+
+	if(con[0].upper()!="Y"):	#if first letter is y it will considered as user wants to continue
 		break
-		
-		
-if(no==1):	#if no==1 user choose to find and replace
-	find = input("Enter word for Find: ")	#find will store word that user wanted to find in para
-	rep = input("Enter word for Replace: ")	#store will store word that user wanted to replace with found worf in para
-	for i in range (0,len(arr)):		#for loop that will ittreate over every word in list that is made up of para
-		if(arr[i]==find):		#if perticular word is found in list
-			arr[i]=rep		#it will replace found word to rep word
-			count+=1		#count will incremented by 1 so we can keep track how many replce are done
-		strin=""			#created new string for storing replaced para
-		for ele in arr:			#ittrate over every word in arr
-			strin+=ele		#append word to string
-			strin+=" "   		#add space between every word
-	print(count,"Replacment done")		#display how many times word is replaced
-	print(strin)				#printing final para with replaced word
-	
-	
-elif(no==2):	#if no==2 user choose to find 
-	find = input("Enter word for Find: ")	#find will store word that user wanted to find in para
-	for i in range (0,len(arr)):		#for loop that will ittreate over every word in list that is made up of para
-		if(arr[i]==find):		#if perticular word is found in list
-			count+=1		#count will incremented by 1 so we can keep track how many words are found
-	print(count,"times word",find,"found")	#display how many times word is found
-	
-	
-else:		#if no==3 or else condition user choose to find and replace without case-sensitivity 
-	find = input("Enter word for Find: ")	#find will store word that user wanted to find in para
-	rep = input("Enter word for Replace: ")	
-	for i in range (0,len(arr)):		#for loop that will ittreate over every word in list that is made up of para
-		if(arr[i].upper()==find.upper()):	#find word without case-sensitivity
-			arr[i]=rep			#it will replace found word to rep word
-			count+=1			#count will incremented by 1 so we can keep track how many replce are done
-		strin=""				#created new string for storing replaced para
-		for ele in arr:				#ittrate over every word in arr
-			strin+=ele			#append word to string
-			strin+=" "   			#add space between every word
-	print(count,"Replacment done")		#display how many times word is replaced			
-	print(strin)				#printing final para with replaced word	
+print("\n----------------------ThankYou-----------------------------")
+

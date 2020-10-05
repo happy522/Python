@@ -1,0 +1,39 @@
+count=0
+string = input("Enter one paregraph: ")
+arr = string.split()
+while(True):
+	no = int(input("Enter number: \n 1. For Find and Replace \n 2. For Find\n 3. For Find and Replace without case sensitivity\n"))
+	if(no<=3 and no>=1):
+		break
+if(no==1):
+	find = input("Enter word for Find: ")
+	rep = input("Enter word for Replace: ")
+	for i in range (0,len(arr)):
+		if(arr[i]==find):
+			arr[i]=rep
+			count+=1
+		strin=""
+		for ele in arr:
+			strin+=ele
+			strin+=" "   
+	print(count,"Replacment done")
+	print(strin)
+elif(no==2):
+	find = input("Enter word for Find: ")
+	for i in range (0,len(arr)):
+		if(arr[i]==find):
+			count+=1
+	print(count,"times word",find,"found")
+else:
+	find = input("Enter word for Find: ")
+	rep = input("Enter word for Replace: ")
+	for i in range (0,len(arr)):
+		if(arr[i].upper()==find.upper()):
+			arr[i]=rep
+			count+=1
+		strin=""
+		for ele in arr:
+			strin+=ele
+			strin+=" "   
+	print(count,"Replacment done")
+	print(strin)
